@@ -7,7 +7,16 @@ output who won
 */
 
 function getComputerChoice () {
-    const options = ["ROCK", "PAPER", "SCISSORS"]
-    const choice = Math.floor(Math.random() * options.length)
-    console.log(options[choice])
+    const options = ["ROCK", "PAPER", "SCISSORS"];
+    const choice = Math.floor(Math.random() * options.length);
+    return options[choice];
+}
+
+function getPlayerChoice () {
+    let playerChoice = prompt("What do you choose?");
+    return playerChoice;
+}
+
+function playRound (playerSelection, computerSelection) {
+    
 }
