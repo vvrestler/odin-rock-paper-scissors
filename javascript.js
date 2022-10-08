@@ -1,11 +1,4 @@
-/*
-initialize rock, paper, and scissors choices
-randomize computer choice
-get user choice
-compute the winner
-output who won
-*/
-
+//Get the computer's choice, and the player's choice. Convert player choice to uppercase for strict compariosn later
 function getComputerChoice () {
     const options = ["ROCK", "PAPER", "SCISSORS"];
     const choice = Math.floor(Math.random() * options.length);
@@ -20,7 +13,9 @@ function getPlayerChoice () {
 function playerChoiceToUpperCase () {
     let rawPlayerChoice = getPlayerChoice();
     let playerChoice = rawPlayerChoice.toUpperCase();
+    console.log(playerChoice + "player");
     return playerChoice;
+   
 }
 
 /*
@@ -29,57 +24,18 @@ determine winner
 */
 
 
-function playRound (playerSelection = playerChoiceToUpperCase(), computerSelection = getComputerChoice()) {
+function playRound (computerSelection = getComputerChoice()) {
     if (computerSelection === "ROCK") {
-     switch (playerSelection) {
-        case ("ROCK"):
-            tie();
-            break;
-        case ("PAPER"):
-            playerWins();
-            break;
-        case ("SCISSORS"):
-            computerWins();
-            break;
-        default:
-            alert("Something has gone wrong.");
+     computerPlaysRock();
      }
-    }
         
-     if (computerSelection === "PAPER") {
-        switch (playerSelection) {
-           case ("ROCK"):
-               computerWins();
-               break;
-           case ("PAPER"):
-               tie();
-               break;
-           case ("SCISSORS"):
-               playerWins();
-               break;
-           default:
-               alert("Something has gone wrong.");
-        
-        }
+    else if (computerSelection === "PAPER") {
+        computerPlaysPaper();
     }
-
-        if (computerSelection === "SCISSORS") {
-            switch (playerSelection) {
-               case ("ROCK"):
-                   playerWins();
-                   break;
-               case ("PAPER"):
-                   computerWins();
-                   break;
-               case ("SCISSORS"):
-                   tie();
-                   break;
-               default:
-                   alert("Something has gone wrong.");
-            } 
-        }
-    console.log(playerSelection);
-    console.log(computerSelection);
+    else if (computerSelection === "SCISSORS") {
+        computerPlaysScissors();
+            }     
+    console.log(computerSelection + "computer");
 }
 
 function tie() {
@@ -92,6 +48,57 @@ function computerWins() {
 
 function playerWins() {
     alert("You win!");
+}
+
+
+//Functtions for finding the game result after getting the choices
+function computerPlaysRock(playerSelection) {
+    switch (playerSelection = playerChoiceToUpperCase()) {
+        case ("ROCK"):
+            tie();
+            break;
+        case ("PAPER"):
+            playerWins();
+            break;
+        case ("SCISSORS"):
+            computerWins();
+            break;
+        default:
+            alert("Something has gone wrong.");
+     }
+}
+
+function computerPlaysPaper (playerSelection) {
+    switch (playerSelection = playerChoiceToUpperCase()) {
+        case ("ROCK"):
+            computerWins();
+            break;
+        case ("PAPER"):
+            tie();
+            break;
+        case ("SCISSORS"):
+            playerWins();
+            break;
+        default:
+            alert("Something has gone wrong.");
+     
+     }
+ }
+
+ function computerPlaysScissors (playerSelection) {
+   switch (playerSelection = playerChoiceToUpperCase()) {
+        case ("ROCK"):
+        playerWins();
+        break;
+    case ("PAPER"):
+        computerWins();
+        break;
+    case ("SCISSORS"):
+        tie();
+        break;
+    default:
+        alert("Something has gone wrong.");
+    }
 }
 
 playRound();
