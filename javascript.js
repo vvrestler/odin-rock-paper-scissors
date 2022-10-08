@@ -13,10 +13,12 @@ function getComputerChoice () {
 }
 
 function getPlayerChoice () {
-    let playerChoice = prompt("What do you choose?");
-    return playerChoice;
+    let rawPlayerChoice = prompt("What do you choose?");
+    return rawPlayerChoice;
 }
 
-function playRound (playerSelection, computerSelection) {
-    
+function playerChoiceToUpperCase () {
+    let rawPlayerChoice = getPlayerChoice();
+    let playerChoice = rawPlayerChoice.toUpperCase();
+    return playerChoice;
 }
