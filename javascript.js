@@ -28,31 +28,70 @@ compare player choice to computer choice
 determine winner
 */
 
-/*
+
 function playRound (playerSelection = playerChoiceToUpperCase(), computerSelection = getComputerChoice()) {
-    switch (playerSelection == "ROCK") {
-        case (computerSelection == "ROCK"):
-        alert("It's a tie!")
-
+    if (computerSelection === "ROCK") {
+     switch (playerSelection) {
+        case ("ROCK"):
+            tie();
+            break;
+        case ("PAPER"):
+            playerWins();
+            break;
+        case ("SCISSORS"):
+            computerWins();
+            break;
+        default:
+            alert("Something has gone wrong.");
+     }
     }
-}
-        console.log(playerSelection);
+        
+     if (computerSelection === "PAPER") {
+        switch (playerSelection) {
+           case ("ROCK"):
+               computerWins();
+               break;
+           case ("PAPER"):
+               tie();
+               break;
+           case ("SCISSORS"):
+               playerWins();
+               break;
+           default:
+               alert("Something has gone wrong.");
+        
+        }
+    }
+
+        if (computerSelection === "SCISSORS") {
+            switch (playerSelection) {
+               case ("ROCK"):
+                   playerWins();
+                   break;
+               case ("PAPER"):
+                   computerWins();
+                   break;
+               case ("SCISSORS"):
+                   tie();
+                   break;
+               default:
+                   alert("Something has gone wrong.");
+            } 
+        }
+    console.log(playerSelection);
     console.log(computerSelection);
-    
-
-    }
-    */
+}
 
 function tie() {
     alert("It's a tie!");
 }
 
 function computerWins() {
-    alert("The computer wins.");
+    alert("You lose.");
 }
 
 function playerWins() {
     alert("You win!");
 }
 
-    
+playRound();
