@@ -13,7 +13,7 @@ function getComputerChoice () {
 }
 
 function getPlayerChoice () {
-    let rawPlayerChoice = prompt("What do you choose?");
+    let rawPlayerChoice = prompt("Pick Rock, Paper, or Scissors");
     return rawPlayerChoice;
 }
 
@@ -22,3 +22,37 @@ function playerChoiceToUpperCase () {
     let playerChoice = rawPlayerChoice.toUpperCase();
     return playerChoice;
 }
+
+/*
+compare player choice to computer choice
+determine winner
+*/
+
+/*
+function playRound (playerSelection = playerChoiceToUpperCase(), computerSelection = getComputerChoice()) {
+    switch (playerSelection == "ROCK") {
+        case (computerSelection == "ROCK"):
+        alert("It's a tie!")
+
+    }
+}
+        console.log(playerSelection);
+    console.log(computerSelection);
+    
+
+    }
+    */
+
+function tie() {
+    alert("It's a tie!");
+}
+
+function computerWins() {
+    alert("The computer wins.");
+}
+
+function playerWins() {
+    alert("You win!");
+}
+
+    
