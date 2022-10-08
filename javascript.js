@@ -7,7 +7,9 @@ function getComputerChoice () {
 
 function getPlayerChoice () {
     let rawPlayerChoice = prompt("Pick Rock, Paper, or Scissors");
-    return rawPlayerChoice;
+    if (rawPlayerChoice == null) {
+        return("No value input.")
+    } else return rawPlayerChoice;
 }
 
 function playerChoiceToUpperCase () {
@@ -38,7 +40,8 @@ function playRound (computerSelection = getComputerChoice()) {
     console.log(computerSelection + "computer");
 }
 
-function tie() {
+//Game outcomes
+function istie() {
     alert("It's a tie!");
 }
 
@@ -55,7 +58,7 @@ function playerWins() {
 function computerPlaysRock(playerSelection) {
     switch (playerSelection = playerChoiceToUpperCase()) {
         case ("ROCK"):
-            tie();
+            istie();
             break;
         case ("PAPER"):
             playerWins();
@@ -74,7 +77,7 @@ function computerPlaysPaper (playerSelection) {
             computerWins();
             break;
         case ("PAPER"):
-            tie();
+            istie();
             break;
         case ("SCISSORS"):
             playerWins();
@@ -94,11 +97,18 @@ function computerPlaysPaper (playerSelection) {
         computerWins();
         break;
     case ("SCISSORS"):
-        tie();
+        istie();
         break;
     default:
         alert("Something has gone wrong.");
     }
 }
 
-playRound();
+function game() {
+    for (i = 0; i < 5; i++) {
+        playRound();
+    }
+
+}
+
+game();
