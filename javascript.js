@@ -15,100 +15,67 @@ function getPlayerChoice () {
 function playerChoiceToUpperCase () {
     let rawPlayerChoice = getPlayerChoice();
     let playerChoice = rawPlayerChoice.toUpperCase();
-    console.log(playerChoice + "player");
+    console.log(playerChoice + "player"); //debug
     return playerChoice;
-   
 }
 
 /*
-compare player choice to computer choice
-determine winner
+return 1 if the player won, return 2 if the computer won, return 3 if tie
 */
 
-
-function playRound (computerSelection = getComputerChoice()) {
+function playRound (playerSelection = playerChoiceToUpperCase(), computerSelection = getComputerChoice()) {
+    console.log(computerSelection + "computer"); //debug
     if (computerSelection === "ROCK") {
-     computerPlaysRock();
+        switch (playerSelection) {
+            case ("ROCK"):
+                return 3;
+            case ("PAPER"):
+                return 1;
+            case ("SCISSORS"):
+                return 2;
+            default:
+                alert("Something has gone wrong.");
+         }
      }
-        
     else if (computerSelection === "PAPER") {
-        computerPlaysPaper();
+        switch (playerSelection) {
+            case ("ROCK"):
+                return 2;
+            case ("PAPER"):
+                return 3;
+            case ("SCISSORS"):
+                return 1;
+            default:
+                alert("Something has gone wrong.");
+        }
     }
     else if (computerSelection === "SCISSORS") {
-        computerPlaysScissors();
-            }     
-    console.log(computerSelection + "computer");
+        switch (playerSelection) {
+            case ("ROCK"):
+                return 1;
+            case ("PAPER"):
+                return 2;
+            case ("SCISSORS"):
+                return 3;
+            default:
+                alert("Something has gone wrong.");
+            }
+    }     
 }
 
-//Game outcomes
-function istie() {
-    alert("It's a tie!");
-}
-
-function computerWins() {
-    alert("You lose.");
-}
-
-function playerWins() {
-    alert("You win!");
-}
-
-
-//Functtions for finding the game result after getting the choices
-function computerPlaysRock(playerSelection) {
-    switch (playerSelection = playerChoiceToUpperCase()) {
-        case ("ROCK"):
-            istie();
-            break;
-        case ("PAPER"):
-            playerWins();
-            break;
-        case ("SCISSORS"):
-            computerWins();
-            break;
-        default:
-            alert("Something has gone wrong.");
-     }
-}
-
-function computerPlaysPaper (playerSelection) {
-    switch (playerSelection = playerChoiceToUpperCase()) {
-        case ("ROCK"):
-            computerWins();
-            break;
-        case ("PAPER"):
-            istie();
-            break;
-        case ("SCISSORS"):
-            playerWins();
-            break;
-        default:
-            alert("Something has gone wrong.");
-     
-     }
- }
-
- function computerPlaysScissors (playerSelection) {
-   switch (playerSelection = playerChoiceToUpperCase()) {
-        case ("ROCK"):
-        playerWins();
-        break;
-    case ("PAPER"):
-        computerWins();
-        break;
-    case ("SCISSORS"):
-        istie();
-        break;
-    default:
-        alert("Something has gone wrong.");
-    }
-}
-
+//TODO need to get playRound to interact with playerWins, computerWins, and isTie
 function game() {
-    for (i = 0; i < 5; i++) {
-        playRound();
+    let playerScore = 0;
+    let computerScore = 0;
+    
+    for (i = 0; i < 5; i++) {  
+        let playerWon = playRound();
+        if(playerWon == 1) {playerScore++;}
+        else if (playerWon == 2) {computerScore++;}
+        else if (playerWon == 3){
+            i--;
+            console.log("Tie! Play again.");
+        }
+       console.log(`The score is Player - ${playerScore} to Computer - ${computerScore}`);
     }
-
 }
-
-game();
