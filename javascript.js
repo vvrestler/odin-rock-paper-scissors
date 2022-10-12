@@ -1,20 +1,23 @@
-//Get the computer's choice, and the player's choice. Convert player choice to uppercase for strict compariosn later
-function getComputerChoice () {
+//Get the computer's choice, and the player's choice. Convert player choice to uppercase for strict comparison later
+function getComputerChoice() {
     const options = ["ROCK", "PAPER", "SCISSORS"];
     const choice = Math.floor(Math.random() * options.length);
     return options[choice];
 }
 
-function getPlayerChoice () {
-    let rawPlayerChoice = prompt("Pick Rock, Paper, or Scissors");
-    if (rawPlayerChoice == null) {
-        return("No value input.")
-    } else return rawPlayerChoice;
-}
-
-function playerChoiceToUpperCase () {
-    let rawPlayerChoice = getPlayerChoice();
-    let playerChoice = rawPlayerChoice.toUpperCase();
+function getPlayerChoice() {
+    let playerChoice;
+    let rawPlayerChoice;
+    while(playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice !="SCISSORS"){
+        rawPlayerChoice = prompt("Pick Rock, Paper, or Scissors");
+        if(rawPlayerChoice != null) {   //only for handling null inputs from the prompt, as .toUpperCase cannot real null values
+        playerChoice = rawPlayerChoice.toUpperCase();
+           if(playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice !="SCISSORS") {
+                alert("Please input either Rock, Paper, or Scissors.");
+            }
+        } 
+        else alert("Please input either Rock, Paper, or Scissors.");
+    }
     return playerChoice;
 }
 
@@ -22,7 +25,7 @@ function playerChoiceToUpperCase () {
 return 1 if the player won, return 2 if the computer won, return 3 if tie
 */
 
-function playRound (playerSelection = playerChoiceToUpperCase(), computerSelection = getComputerChoice()) {
+function playRound(playerSelection = getPlayerChoice(), computerSelection = getComputerChoice()) {
     if (computerSelection === "ROCK") {
         switch (playerSelection) {
             case ("ROCK"):
