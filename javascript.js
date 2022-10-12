@@ -15,7 +15,6 @@ function getPlayerChoice () {
 function playerChoiceToUpperCase () {
     let rawPlayerChoice = getPlayerChoice();
     let playerChoice = rawPlayerChoice.toUpperCase();
-    console.log(playerChoice + "player"); //debug
     return playerChoice;
 }
 
@@ -24,7 +23,6 @@ return 1 if the player won, return 2 if the computer won, return 3 if tie
 */
 
 function playRound (playerSelection = playerChoiceToUpperCase(), computerSelection = getComputerChoice()) {
-    console.log(computerSelection + "computer"); //debug
     if (computerSelection === "ROCK") {
         switch (playerSelection) {
             case ("ROCK"):
@@ -68,7 +66,7 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
     
-    for (i = 0; i < 5; i++) {  
+    for (let i = 0; i < 5; i++) {  
         let playerWon = playRound();
         if(playerWon == 1) {playerScore++;}
         else if (playerWon == 2) {computerScore++;}
@@ -78,4 +76,12 @@ function game() {
         }
        console.log(`The score is Player - ${playerScore} to Computer - ${computerScore}`);
     }
+    if (playerScore > computerScore) 
+    {
+        console.log("Congratulations! You win!");
+    } else {
+        console.log("Oh no! You lost!");
+    }
 }
+
+console.log("Type game(); and then press enter to play! Best of five rounds wins!");
