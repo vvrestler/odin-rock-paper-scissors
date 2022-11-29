@@ -1,4 +1,3 @@
-//Get the computer's choice, and the player's choice. Convert player choice to uppercase for strict comparison later
 function getComputerChoice() {
     const options = ["ROCK", "PAPER", "SCISSORS"];
     const choice = Math.floor(Math.random() * options.length);
@@ -32,10 +31,13 @@ function playRound(playerSelection, computerSelection = getComputerChoice()) {
     if (computerSelection === "ROCK") {
         switch (playerSelection) {
             case ("ROCK"):
+                results.textContent = "Tie! Play again.";
                 return 3;
             case ("PAPER"):
+                results.textContent = "You won this round!";
                 return 1;
             case ("SCISSORS"):
+                results.textContent = "You lost this round.";
                 return 2;
             default:
                 alert("Something has gone wrong.");
@@ -44,10 +46,13 @@ function playRound(playerSelection, computerSelection = getComputerChoice()) {
     else if (computerSelection === "PAPER") {
         switch (playerSelection) {
             case ("ROCK"):
+                results.textContent = "You lost this round.";
                 return 2;
             case ("PAPER"):
+                results.textContent = "Tie! Play again.";
                 return 3;
             case ("SCISSORS"):
+                results.textContent = "You won this round!";
                 return 1;
             default:
                 alert("Something has gone wrong.");
@@ -56,10 +61,13 @@ function playRound(playerSelection, computerSelection = getComputerChoice()) {
     else if (computerSelection === "SCISSORS") {
         switch (playerSelection) {
             case ("ROCK"):
+                results.textContent = "You won this round!";
                 return 1;
             case ("PAPER"):
+                results.textContent = "You lost this round.";
                 return 2;
             case ("SCISSORS"):
+                results.textContent = "Tie! Play again.";
                 return 3;
             default:
                 alert("Something has gone wrong.");
@@ -75,6 +83,8 @@ paper.addEventListener('click', () => playRound("PAPER"));
 
 const scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', () => playRound("SCISSORS"));
+
+const results = document.querySelector('#results');
 
 function game() {
     let playerScore = 0;
