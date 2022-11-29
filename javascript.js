@@ -10,7 +10,7 @@ function getPlayerChoice() {
     let rawPlayerChoice;
     while(playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice !="SCISSORS"){
         rawPlayerChoice = prompt("Pick Rock, Paper, or Scissors");
-        if(rawPlayerChoice != null) {   //only for handling null inputs from the prompt, as .toUpperCase cannot real null values
+        if(rawPlayerChoice != null) {   //onlyhandling null inputs from the prompt, as .toUpperCase cannot real null values
         playerChoice = rawPlayerChoice.toUpperCase();
            if(playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice !="SCISSORS") {
                 alert("Please input either Rock, Paper, or Scissors.");
@@ -64,7 +64,6 @@ function playRound(playerSelection = getPlayerChoice(), computerSelection = getC
     }     
 }
 
-//TODO need to get playRound to interact with playerWins, computerWins, and isTie
 function game() {
     let playerScore = 0;
     let computerScore = 0;
