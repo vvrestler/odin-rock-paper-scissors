@@ -5,6 +5,8 @@ function getComputerChoice() {
     return options[choice];
 }
 
+/*
+
 function getPlayerChoice() {
     let playerChoice;
     let rawPlayerChoice;
@@ -20,6 +22,7 @@ function getPlayerChoice() {
     }
     return playerChoice;
 }
+*/
 
 /*
 return 1 if the player won, return 2 if the computer won, return 3 if tie
@@ -65,13 +68,13 @@ function playRound(playerSelection = getPlayerChoice(), computerSelection = getC
 }
 
 const rock = document.querySelector('#rock');
-rock.addEventListener('click', () => playRound());
+rock.addEventListener('click', () => playRound("ROCK"));
 
 const paper = document.querySelector('#paper');
-paper.addEventListener('click', () => playRound());
+paper.addEventListener('click', () => playRound("PAPER"));
 
 const scissors = document.querySelector('#scissors');
-scissors.addEventListener('click', () => playRound());
+scissors.addEventListener('click', () => playRound("SCISSORS"));
 
 function game() {
     let playerScore = 0;
