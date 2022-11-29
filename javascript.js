@@ -10,7 +10,7 @@ function getPlayerChoice() {
     let rawPlayerChoice;
     while(playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice !="SCISSORS"){
         rawPlayerChoice = prompt("Pick Rock, Paper, or Scissors");
-        if(rawPlayerChoice != null) {   //onlyhandling null inputs from the prompt, as .toUpperCase cannot real null values
+        if(rawPlayerChoice != null) {   //only handling null inputs from the prompt, as .toUpperCase cannot real null values
         playerChoice = rawPlayerChoice.toUpperCase();
            if(playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice !="SCISSORS") {
                 alert("Please input either Rock, Paper, or Scissors.");
@@ -63,6 +63,15 @@ function playRound(playerSelection = getPlayerChoice(), computerSelection = getC
             }
     }     
 }
+
+const rock = document.querySelector('#rock');
+rock.addEventListener('click', () => playRound());
+
+const paper = document.querySelector('#paper');
+paper.addEventListener('click', () => playRound());
+
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', () => playRound());
 
 function game() {
     let playerScore = 0;
