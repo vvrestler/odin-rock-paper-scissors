@@ -4,41 +4,23 @@ function getComputerChoice() {
     return options[choice];
 }
 
-/*
-
-function getPlayerChoice() {
-    let playerChoice;
-    let rawPlayerChoice;
-    while(playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice !="SCISSORS"){
-        rawPlayerChoice = prompt("Pick Rock, Paper, or Scissors");
-        if(rawPlayerChoice != null) {   //only handling null inputs from the prompt, as .toUpperCase cannot real null values
-        playerChoice = rawPlayerChoice.toUpperCase();
-           if(playerChoice != "ROCK" && playerChoice != "PAPER" && playerChoice !="SCISSORS") {
-                alert("Please input either Rock, Paper, or Scissors.");
-            }
-        } 
-        else alert("Please input either Rock, Paper, or Scissors.");
-    }
-    return playerChoice;
-}
-*/
-
-/*
-return 1 if the player won, return 2 if the computer won, return 3 if tie
-*/
+let computerScore = 0;
+let playerScore = 0;
 
 function playRound(playerSelection, computerSelection = getComputerChoice()) {
     if (computerSelection === "ROCK") {
         switch (playerSelection) {
             case ("ROCK"):
                 results.textContent = "Tie! Play again.";
-                return 3;
+                break;
             case ("PAPER"):
                 results.textContent = "You won this round!";
-                return 1;
+                playerScore++;
+                break;
             case ("SCISSORS"):
                 results.textContent = "You lost this round.";
-                return 2;
+                computerScore++;
+                break;
             default:
                 alert("Something has gone wrong.");
          }
@@ -47,13 +29,15 @@ function playRound(playerSelection, computerSelection = getComputerChoice()) {
         switch (playerSelection) {
             case ("ROCK"):
                 results.textContent = "You lost this round.";
-                return 2;
+                computerScore++;
+                break;
             case ("PAPER"):
                 results.textContent = "Tie! Play again.";
-                return 3;
+                break;
             case ("SCISSORS"):
                 results.textContent = "You won this round!";
-                return 1;
+                playerScore++;
+                break;
             default:
                 alert("Something has gone wrong.");
         }
@@ -62,13 +46,14 @@ function playRound(playerSelection, computerSelection = getComputerChoice()) {
         switch (playerSelection) {
             case ("ROCK"):
                 results.textContent = "You won this round!";
-                return 1;
+                playerScore++;
+                break;
             case ("PAPER"):
                 results.textContent = "You lost this round.";
-                return 2;
+                computerScore++;
+                break;
             case ("SCISSORS"):
                 results.textContent = "Tie! Play again.";
-                return 3;
             default:
                 alert("Something has gone wrong.");
             }
@@ -85,27 +70,6 @@ const scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', () => playRound("SCISSORS"));
 
 const results = document.querySelector('#results');
+const score = document.querySelector('#score');
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    
-    for (let i = 0; i < 5; i++) {  
-        let playerWon = playRound();
-        if(playerWon == 1) {playerScore++;}
-        else if (playerWon == 2) {computerScore++;}
-        else if (playerWon == 3){
-            i--;
-            console.log("Tie! Play again.");
-        }
-       console.log(`The score is Player - ${playerScore} to Computer - ${computerScore}`);
-    }
-    if (playerScore > computerScore) 
-    {
-        console.log("Congratulations! You win!");
-    } else {
-        console.log("Oh no! You lost!");
-    }
-}
-
-console.log("Type game(); and then press enter to play! Best of five rounds wins!");
+score.textContent = `Your score is ${playerScore} and the computer's score is ${computerScore}.`
