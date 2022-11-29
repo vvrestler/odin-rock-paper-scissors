@@ -12,13 +12,16 @@ function playRound(playerSelection, computerSelection = getComputerChoice()) {
         switch (playerSelection) {
             case ("ROCK"):
                 results.textContent = "Tie! Play again.";
+                score.textContent = `Your score is ${playerScore} and the computer's score is ${computerScore}.`
                 break;
             case ("PAPER"):
                 results.textContent = "You won this round!";
+                score.textContent = `Your score is ${playerScore} and the computer's score is ${computerScore}.`
                 playerScore++;
                 break;
             case ("SCISSORS"):
                 results.textContent = "You lost this round.";
+                score.textContent = `Your score is ${playerScore} and the computer's score is ${computerScore}.`
                 computerScore++;
                 break;
             default:
@@ -29,13 +32,16 @@ function playRound(playerSelection, computerSelection = getComputerChoice()) {
         switch (playerSelection) {
             case ("ROCK"):
                 results.textContent = "You lost this round.";
+                score.textContent = `Your score is ${playerScore} and the computer's score is ${computerScore}.`
                 computerScore++;
                 break;
             case ("PAPER"):
                 results.textContent = "Tie! Play again.";
+                score.textContent = `Your score is ${playerScore} and the computer's score is ${computerScore}.`
                 break;
             case ("SCISSORS"):
                 results.textContent = "You won this round!";
+                score.textContent = `Your score is ${playerScore} and the computer's score is ${computerScore}.`
                 playerScore++;
                 break;
             default:
@@ -46,14 +52,17 @@ function playRound(playerSelection, computerSelection = getComputerChoice()) {
         switch (playerSelection) {
             case ("ROCK"):
                 results.textContent = "You won this round!";
+                score.textContent = `Your score is ${playerScore} and the computer's score is ${computerScore}.`
                 playerScore++;
                 break;
             case ("PAPER"):
                 results.textContent = "You lost this round.";
+                score.textContent = `Your score is ${playerScore} and the computer's score is ${computerScore}.`
                 computerScore++;
                 break;
             case ("SCISSORS"):
                 results.textContent = "Tie! Play again.";
+                score.textContent = `Your score is ${playerScore} and the computer's score is ${computerScore}.`
             default:
                 alert("Something has gone wrong.");
             }
@@ -71,5 +80,3 @@ scissors.addEventListener('click', () => playRound("SCISSORS"));
 
 const results = document.querySelector('#results');
 const score = document.querySelector('#score');
-
-score.textContent = `Your score is ${playerScore} and the computer's score is ${computerScore}.`
