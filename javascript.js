@@ -28,7 +28,7 @@ function getPlayerChoice() {
 return 1 if the player won, return 2 if the computer won, return 3 if tie
 */
 
-function playRound(playerSelection = getPlayerChoice(), computerSelection = getComputerChoice()) {
+function playRound(playerSelection, computerSelection = getComputerChoice()) {
     if (computerSelection === "ROCK") {
         switch (playerSelection) {
             case ("ROCK"):
